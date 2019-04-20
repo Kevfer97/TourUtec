@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Tour Utec Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/bootstrap/dist/css/bootstrap.min.css'); ?>">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/font-awesome/css/font-awesome.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/font-awesome/css/font-awesome.min.css'); ?>">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/Ionicons/css/ionicons.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/Ionicons/css/ionicons.min.css'); ?>">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/jvectormap/jquery-jvectormap.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/bower_components/jvectormap/jquery-jvectormap.css'); ?>">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/dist/css/AdminLTE.min.css'); ?>">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/skin-utec.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('TourUtec_Admin/assets/dist/css/skins/skin-utec.css'); ?>">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,13 +56,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs">Alexander Pierce</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   Alexander Pierce 
@@ -92,7 +92,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('TourUtec_Admin/assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Alexander Pierce</p>
