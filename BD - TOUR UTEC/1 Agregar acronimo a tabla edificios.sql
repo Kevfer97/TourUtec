@@ -1,0 +1,1 @@
+ALTER TABLE tourutec.adm_edf_edificio ADD edf_acronimo VARCHAR(20) NULL;

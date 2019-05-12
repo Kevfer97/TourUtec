@@ -1,3 +1,5 @@
+CREATE DATABASE tourutec;
+USE tourutec;
 -- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tourutec
