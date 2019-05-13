@@ -44,7 +44,7 @@
    
    //API call - add/update user record
     public function guardarDatos($id, $data){
-        if (condition) {
+        if ($id == 0) {
             if($this->db->insert($this->tblName, $data)){
                 return true;
             }else{
