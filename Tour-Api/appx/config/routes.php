@@ -54,4 +54,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['Edificios/listaEdificios']['GET'] = 'edificios_controller/listaEdificios';
-$route['Edificios/borrarDatos/(:num)']['DELETE'] = 'edificios_controller/borrarDatos/$1';
+$route['Edificios/borrarDatos/(:num)']['DELETE'] = 'edificios_controller/borrarDatos/';
+$route['Edificios/editarEdificios/(:num)']['PUT'] = 'edificios_controller/editarEdificios/';

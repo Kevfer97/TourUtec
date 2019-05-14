@@ -63,21 +63,18 @@ class edificios_controller extends REST_Controller{
     }
     
     //API - update a book 
-    function updateBook_put(){
+    function editarEdificios_put(){
          
-         $name      = $this->put('name');
-         $price     = $this->put('price');
-         $author    = $this->put('author');
-         $category  = $this->put('category');
-         $language  = $this->put('language');
-         $isbn      = $this->put('isbn');
-         $pub_date  = $this->put('publish_date');
-         $id        = $this->put('id');
+         $n      = $this->put('n');
+         $o     = $this->put('o');
+         $l    = $this->put('l');
+         $a  = $this->put('a');
+         $c  = $this->put('c');
          
-         if(!$name || !$price || !$author || !$price || !$isbn || !$category){
+         if(!$n || !$o || !$l || !$a || !$c ){
                 $this->response("Enter complete book information to save", 400);
          }else{
-            $result = $this->book_model->update($id, array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
+            $result = $this->clEdificios->update($id, array("n"=>$n, "o"=>$o, "l"=>$l, "a"=>$a, "c"=>$c));
             if($result === 0){
                 $this->response("Book information coild not be saved. Try again.", 404);
             }else{
@@ -86,7 +83,7 @@ class edificios_controller extends REST_Controller{
         }
     }
     //API - delete a book 
-    function borrarDatos()
+    function borrarDatos_delete()
     {
         $this->response("Realizado", 200);
         // $id = '';
