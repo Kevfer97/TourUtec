@@ -33,7 +33,7 @@
    
    //API call - delete a user record
     public function borrarDatos($id){
-       $this->db->where('id', $id);
+       $this->db->where('edf_codigo', $id);
        $this->db->delete($this->tblName);
        if($this->db->affected_rows()>0){
           return true;
@@ -44,14 +44,14 @@
    
    //API call - add/update user record
     public function guardarDatos($id, $data){
-        if (condition) {
+        if ($id == 0) {
             if($this->db->insert($this->tblName, $data)){
                 return true;
             }else{
                 return false;
             }
         }else{
-            $this->db->where('id', $id);
+            $this->db->where('edf_codigo', $id);
             if($this->db->update($this->tblName, $data)){
                 return true;
             }else{
