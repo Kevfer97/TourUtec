@@ -1,9 +1,10 @@
-k<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <style>
@@ -15,13 +16,18 @@ body{
     background-size: cover;
     margin: 0px;
 }
+.hidden{
+ /* visibility: hidden; */
+ display: none;
+}
 .main-menu{
     position:fixed;
     width: 74%;
     margin-left: 13%;
-    margin-top: 0px;
-    
-    background: rgba(107,0,54,0.9);
+    margin-top: 25px;
+    top:0px;
+    left:0px;
+    background: rgba(107,0,54,0.95);
     border-radius: 3%;
     color: #fff;
     
@@ -34,22 +40,26 @@ body{
     -o-background-size: cover;
     background-size: cover;
     margin: 0px;}
-    
+
     .main-menu{
         margin: 0px;
         padding: 0px;
+        visibility: hidden;
+        position: relative;
     width: 100%;
-    background: #fafafa;
+
 }
 
 .main-menu a{
     position:static;
     text-align: center;
-    background: #fafafa;
+    background: rgba(107,0,54,1);
     margin: 0%;
     display: inline-block;
     width: 100%;
+    top:15px;
     margin-top: 0px;
+    margin-left: 15px;
     color: #fff;
 }
 .main-menu a:hover{
@@ -60,8 +70,8 @@ body{
 @media (min-width: 700px){
     .img-bar{
     visibility: hidden;
-}
 
+}
 }
 
 .main-menu a{float: right;
@@ -85,21 +95,61 @@ margin-bottom: 2px;
 .img-bar{
 height: 40px;
 width: 40px;
-padding: 5px;
 float: right;
+position: relative;
+margin: 10px;
+z-index: 9999990;
 }
-.main-menu img{
+.img-bar img{
     height: 100%;
     width: 100%;
 }
+.cont-load{
+    z-index: 9999999;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+    position: fixed;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+}
+.cont-load-img{
+    opacity: 0.95;
+    z-index: 9999999;
+    top:0px;
+    left:0px;
+    bottom:0px;
+    right:0px;
+    
+    margin: auto;
+    position:absolute;
+    line-height: 500px;
+}
+.cont-ico-menu{
+    top:0px;
+    left:0px;
+    right:0px;
+    position:fixed;
+}
 </style>
 <body>
-    <div class="main-menu">
-       <div class="img-bar"><img src="assets/icon-bars.svg" alt=""></div>
-        <a href="">Inicio</a>
-        <a href="">Lugares</a>
-        <a href="">Usuario</a>
+    <div class="cont-load ">
+        <div class="cont-load-img">
+            <center>
+                <img src="assets/load.gif" alt="">
+            </center>
+        </div>
     </div>
+    <div class="cont-ico-menu">
+    <div class="img-bar"><img src="assets/icon-bars.svg" alt=""></div>
+    <div class="main-menu">
+        <a  href="">Inicio</a>
+        <a  href="">Lugares</a>
+        <a  href="">Usuario</a>
+    </div>
+</div>
     <div style="padding:50px;margin: 50px; font-size: 30px;">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, commodi similique consequuntur, et eum dolorum cumque, ex in officiis corrupti repellendus natus optio id nam. Minus aperiam molestiae laboriosam facilis!
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident possimus odio voluptates, velit magni eum nostrum numquam placeat molestiae officiis explicabo incidunt nisi dolorem natus sunt exercitationem. Ipsa, nisi provident.
@@ -113,4 +163,50 @@ float: right;
 
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script> 
+var m_tr = true;
+$(document).ready(function(){
+    setTimeout(cerraLoad, 1000);
+});
+function cerraLoad(){
+$(".cont-load").addClass("hidden");
+}
+$(".img-bar").click(function(){
+if(m_tr){
+    m_tr = false;
+    $(".main-menu").css("visibility","visible").animate({
+    opacity: 0.9,
+    left: "+=10"
+  }, 500, function() {
+    // Animation complete.
+  });
+    $(".cont-ico-menu").css("background","#33001A")
+    $(".img-bar  img").attr("src","assets/icon-bars.png").animate({
+    opacity: 0.5,
+    left: "+=10"
+  }, 500, function() {
+    // Animation complete.
+  });
+}else{
+    m_tr = true;
+    $(".main-menu").css("visibility","hidden").animate({
+    opacity: 0.25,
+    left: "-=10"
+  }, 500, function() {
+    // Animation complete.
+  });
+    $(".cont-ico-menu").css("background","")
+    $(".img-bar  img").attr("src","assets/icon-bars.svg").animate({
+    opacity: 1,
+    left: "-=10"
+  }, 500, function() {
+    // Animation complete.
+  });
+}
+});
+
+
+
+</script>
 </html>
