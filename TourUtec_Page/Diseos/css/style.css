@@ -1,0 +1,101 @@
+.main{
+	padding: 3%;
+	background-color: #fafafa;
+width: 100;
+height: auto;
+}
+
+.boton{
+	height: 180px;
+	width: 250px;
+	color: #fff;
+	font-size: 20px;
+	background-color: #A82432;
+	border-radius: 10%;
+	display: inline-block;
+	margin: 10px;
+	font-family:"Arial";
+}
+.boton img{
+	height: 140px;
+	width: 250px;	
+	position: relative;
+	display: inline-block;
+		border-radius: 10%;
+}
+.boton label{
+	padding: 0px;
+}
+.boton:hover {
+    transform : scale(1.10);
+    	cursor: pointer;
+	background-color: #C11729;
+}
+/*=================== Menu =============================*/
+.menu{
+	background-color: #6B0C17;
+	height: auto;
+	width: 100%;
+	position: relative;
+	border-radius: 6px;
+	display: inline-block;
+}
+.menu a{
+    float: right; !important
+	height: 20px;
+	min-width: 10px;
+	width: auto;
+	background-color: #6B0C17;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	color: #fff;
+	text-decoration: none; !important
+		font-family:"Arial";
+	border-radius: 5px;
+}
+.menu  select{
+	background-color: #6B0C17;
+	color: #fff;
+		font-family:"Arial";
+	border-radius: 5px;
+	border-style: none;
+}
+
+
+.menu  a:hover{
+	background-color: #951524;
+	transform : scale(1.05);
+}
+.menu  select:hover{
+	background-color: #951524;
+	transform : scale(1.05);
+}
+.hidden{
+	display: none;
+}
+
+.on:hover{
+	cursor: pointer;
+	transform : scale(1.05);
+}
+
+.galeria{
+/*	height: 150px;
+	width: 250px;*/
+	/*display: inline-block;*/
+	/*padding: 0px;*/
+}
+.galeria img{
+		height: 150px;
+	width: 250px;
+	float: left;
+		position:relative;
+
+	/*display: inline-block;*/
+		/*border-radius: 10%;*/
+		margin: 10px;
+}
