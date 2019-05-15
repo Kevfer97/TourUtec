@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<style>
+	.pull-right{
+		float: right;
+	}
+	.pull-left{
+		float: left;
+	}
+      .onH{   
+           color:#2265c3;
+                }   
+        .onH:hover{
+            color:#30bce9;
+           cursor:pointer;
+        }
+</style>
+<body>
+<div class="container">
+  <div class="card card-Primary" style="max-width: 700px;">
+  	  	<div class="card-header">Datos Generales</div>
+    <div class="card-body">
+    	<div class="col-md-6">
+    		<label>Nombre de la clase</label>
+	               <input type="text" id="txt_clase" placeholder="Nombre de la clase" class="form-control"  name="">         	
+	        </div>
+    </div>
+  	<div class="card-header">Campos de la BD</div>
+    <div class="card-body">
+    	<table class="table table-striped">
+    		<thead>
+    			<tr>
+    				<th> </th>
+    				<th>Campo</th>
+    				<th>Tipo</th>
+    				<th></th>
+    			</tr>
+    		</thead>
+    		<tbody id="InserData">
+    			
+    		</tbody>
+    	</table>
+    	<div class="form-group">
+    	<div class="row">
+	        <div class="col-md-6">
+	        	<label>Nombre del Campos</label>
+	               <input type="text" id="txt_campo" placeholder="Nombre del campo" class="form-control"  name="">         	
+	        </div>
+	         <div class="col-md-6">
+	         	
+	         	<label>Tipo de dato</label>
+	         	<select class="form-control" id="ddl_tipo">
+	         		<option value="Int">Int</option>
+	         		<option value="Decimal">Decimal</option>
+	         		<option value="Varchar">Varchar</option>
+	         		<option value="DateTime">DateTime</option>
+	         		<option value="Date">Date</option>
+	         		<option value="BINARY">BINARY</option>
+	         	</select>
+	         </div>
+	          <div class="col-md-6">
+	         	
+	         	<label>Es PK?</label>
+	         	<select class="form-control" id="ddl_pk">
+	         		<option value="PK">si</option>
+	         		<option value="n">no</option>
+	         	</select>
+	         </div>
+	         <div class="col-md-12"><br>
+	         	<button id="btn-Agregar" class="btn btn-success pull-right">Agregar Campo</button>
+	         </div>
+	    </div>
+	</div>
+    </div>
+    <div class="card card-footer">
+    	<buttom id="btn-crear" class="btn btn-primary">Crear Clase</buttom>
+    </div>
+</div>
+
+</div>
+</body>
+<script>
+	$("#btn-Agregar").click(function(){
+		var nombre = $("#txt_campo").val();
+		var tipo = $("#ddl_tipo").val();
+		var pk = $("#ddl_pk").val();
+		var html = ""
+		html = "<tr c_nombre='"+nombre+"' c_tipo='"+tipo+"' c_pk='"+pk+"' ><td>"+pk+"</td><td>"+nombre+"</td><td>"+tipo+"</td><td class='DelItem pull-right onH' >X</td></tr>";
+		$("#InserData").append(html);
+	});
+    $("body").on("click", ".DelItem", function () {
+        $(this).parent().remove();
+    });
+
+       function llenarLblItemCopy() {
+            var valores = "";
+            var cont = 1
+            $("#InserData tr").each(function () {
+                if (cont == 1) {
+                    valores += $(this).attr("c_nombre");
+                    valores += "|" +$(this).attr("c_tipo");
+                    valores += "|" +$(this).attr("c_pk");
+                } else {
+                    valores += " " + $(this).attr("c_nombre");
+                    valores += "|" +$(this).attr("c_tipo");
+                    valores += "|" +$(this).attr("c_pk");
+                };
+                cont = 0;
+            });
+            alert(valores)
+        };
+        $("#btn-crear").click(function(){
+        	llenarLblItemCopy();
+        });
+</script>
+</html>
