@@ -58,3 +58,6 @@ $route['product/(:any)']='product/index/$1';
 // $route[':num']='product/index/$1';
 $route['Login'] = 'Autenticar_controller/index';
 $route['Edificios'] = 'Edificios_controller/index';
+$route['Edificios/Buscar'] = 'edificios_controller/Buscar';
+$route['Edificios/Guardar'] = 'edificios_controller/guardarDatos';
+$route['Edificios/Borrar'] = 'edificios_controller/borrarDatos';

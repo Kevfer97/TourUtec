@@ -1,6 +1,8 @@
 <?php
 use Restserver\Libraries\REST_Controller;
-require(APPPATH . 'libraries/REST_Controller.php'); 
+require APPPATH .'/libraries/Format.php';
+require APPPATH . '/config/rest.php';
+require APPPATH . '/libraries/REST_Controller.php';
 class edificios_controller extends REST_Controller{
     
     public function __construct()
@@ -8,100 +10,98 @@ class edificios_controller extends REST_Controller{
         parent::__construct();
         $this->load->model('clEdificios');
     }
-    //API - client sends isbn and on valid isbn book information is sent back
-    function userPorCred_get(){
-        $user  = $this->get('user');
-        $pass  = $this->get('pass');
-        
-        if(!$user || !$pass){
-            $this->response("Usuario o contraseña no especificado", 400);
-            exit;
-        }
-        $result = $this->usuarioModel->getUsuarioPorCred($user, $pass);
-        if($result){
-            $this->response($result, 200); 
-            exit;
-        } 
-        else{
-             $this->response("Credenciales Inválidas", 404);
-            exit;
-        }
-    } 
 
-    //API -  Regresa todos los edificios
+    //API -  Regresa todos los edificios con opción de top
     function listaEdificios_get(){
+        //  $top  = $this->post('n');        
+        $top  = $this->input->get("t"); //this->get('$t');        
+        // $top = 0;
+        // $edf_codigo = 1;
+        // $edf_nombre  = "";
+        // $edf_orden  = 0;
+        // $edf_latitud  = 0;
+        // $edf_longitud  = 0;
+        // $edf_acronimo  = "";
         $result = $this->clEdificios->getEdificios();
         if($result){
-            $this->response($result, 200); 
+            $this->response($result, REST_Controller::HTTP_OK); 
         } 
         else{
-            $this->response("No se encontraron Registros", 404);
+            $this->response("No hay registros" ,  REST_Controller::HTTP_NOT_FOUND);
         }
     }
-     
-    //API - create a new book item in database.
-    function addBook_post(){
-         $name      = $this->post('name');
-         $price     = $this->post('price');
-         $author    = $this->post('author');
-         $category  = $this->post('category');
-         $language  = $this->post('language');
-         $isbn      = $this->post('isbn');
-         $pub_date  = $this->post('publish_date');
-        
-         if(!$name || !$price || !$author || !$price || !$isbn || !$category){
-                $this->response("Enter complete book information to save", 400);
-         }else{
-            $result = $this->book_model->add(array("name"=>$name, "price"=>$price, "author"=>$author, "category"=>$category, "language"=>$language, "isbn"=>$isbn, "publish_date"=>$pub_date));
-            if($result === 0){
-                $this->response("Book information coild not be saved. Try again.", 404);
-            }else{
-                $this->response("success", 200);  
-           
-            }
-        }
-    }
-    
-    //API - update a book 
-    function editarEdificios_put(){
-         
-         $n      = $this->put('n');
-         $o     = $this->put('o');
-         $l    = $this->put('l');
-         $a  = $this->put('a');
-         $c  = $this->put('c');
-         
-         if(!$n || !$o || !$l || !$a || !$c ){
-                $this->response("Enter complete book information to save", 400);
-         }else{
-            $result = $this->clEdificios->update($id, array("n"=>$n, "o"=>$o, "l"=>$l, "a"=>$a, "c"=>$c));
-            if($result === 0){
-                $this->response("Book information coild not be saved. Try again.", 404);
-            }else{
-                $this->response("success", 200);  
-            }
-        }
-    }
-    //API - delete a book 
-    function borrarDatos_delete()
-    {
-        $this->response("Realizado", 200);
-        // $id = '';
-        // $this->response(array(
-        //     'returned from delete:' => $id,
-        // ));
-        // $id = $this->delete('id');
-        // if(!$id){
-        //     $this->response("Parámetro Perdido", 404);
-        // }
 
-        // if($this->clEdificios->borrarDatos($id))
-        // {
-        //     $this->response("Realizado", 200);
-        // } 
-        // else
-        // {
-        //     $this->response("Error", 400);
-        // }
+    //API -  Regresa todos los edificios y se puede filtrar por todos los campos
+    function listaEdificios_fil_get(){
+        //$top  = $this->input->get("t"); //this->get('$t');
+        $edf_codigo  = $this->input->get("c");
+        $edf_nombre  = $this->input->get("n");
+        $edf_orden  = $this->input->get("o");
+        $edf_latitud  = $this->input->get("l");
+        $edf_longitud  = $this->input->get("lo");
+        $edf_acronimo  = $this->input->get("a");
+        $data = array('opc' => 2, 'c' => $edf_codigo, 'n' => $edf_nombre, 'o' => $edf_orden, 'l' => $edf_latitud, 'lo' => $edf_longitud, 'a' => $edf_acronimo);
+        // $top = 0;
+        // $edf_codigo = 1;
+        // $edf_nombre  = "";
+        // $edf_orden  = 0;
+        // $edf_latitud  = 0;
+        // $edf_longitud  = 0;
+        // $edf_acronimo  = "";
+        $result = $this->clEdificios->getEdificios_fil($data);
+        if($result){
+            $this->response($result, REST_Controller::HTTP_OK); 
+        } 
+        else{
+            $this->response("1:".$edf_acronimo." 2:".$edf_codigo , REST_Controller::HTTP_NOT_FOUND);
+        }
+    }    
+    
+    //API - Guarda y actualiza los datos
+    function guardarDatos_post(){
+
+        $edf_codigo  = $this->input->get("c");
+        $edf_nombre  = $this->input->get("n");
+        $edf_orden  = $this->input->get("o");
+        $edf_latitud  = $this->input->get("l");
+        $edf_longitud  = $this->input->get("lo");
+        $edf_acronimo  = $this->input->get("a");
+        // $edf_codigo = 11;
+        // $edf_nombre  = "test";
+        // $edf_orden  = 7;
+        // $edf_latitud  = 231.1;
+        // $edf_longitud  = -9854;
+        // $edf_acronimo  = "fdgfg";
+         if(!$edf_nombre || !$edf_orden || !$edf_latitud || !$edf_longitud || !$edf_acronimo ){
+                $this->response("No se pudo ingresar el registro debido a que la inormación no esta completa.", REST_Controller::HTTP_BAD_REQUEST);
+         }else{
+            $result = $this->clEdificios->guardarDatos($edf_codigo, array("edf_nombre"=>$edf_nombre, 
+                                                                            "edf_orden"=>$edf_orden, 
+                                                                            "edf_latitud"=>$edf_latitud, 
+                                                                            "edf_longitud"=>$edf_longitud, 
+                                                                            "edf_acronimo"=>$edf_acronimo));
+            if(empty($result)){
+                $this->response("No se puede insertar/recuperar el registro", REST_Controller::HTTP_NOT_FOUND);
+            }else{
+                $this->response($result, REST_Controller::HTTP_OK);  
+            }
+        }
+    }
+
+    //API - Borra registros
+    function borrarDatos_delete(){        
+        $id = $this->input->delete('c');
+        if(!$id){
+            $this->response("Parámetro Perdido", REST_Controller::HTTP_NOT_FOUND);
+        }
+        $result = $this->clEdificios->borrarDatos($id);
+        if(empty($result))
+        {
+            $this->response("Realizado. Afectó: ". $result, REST_Controller::HTTP_OK);
+        } 
+        else
+        {
+            $this->response("Error", REST_Controller::HTTP_BAD_REQUEST);
+        }
     }
 }
