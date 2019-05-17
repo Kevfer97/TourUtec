@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <title>Document</title>
 </head>
 <style>
@@ -16,13 +17,24 @@ height: auto;
 margin: 0%;
 margin-top:7%;
 }
-
+.titulo-Listado{
+  width: 90%;
+  max-width: 600px;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  background-color:rgba(107, 0, 54, 0.993);
+  color: #fff;
+  /* font-weight: bold; */
+  font-size: 20px;
+}
 .boton{
 	height: 180px;
 	width: 250px;
 	color: #fff;
 	font-size: 20px;
-	background-color:#C11729;
+	background-color:rgba(148, 38, 93, 0.993);
 	border-radius: 10%;
 	display: inline-block;
 	margin: 10px;
@@ -40,7 +52,7 @@ margin-top:7%;
 .boton:hover {
     transform : scale(1.10);
     	cursor: pointer;
-	background-color: #C11729;
+	background-color: rgba(107, 0, 54, 0.993);
 }
 
 .hidden{
@@ -80,16 +92,18 @@ body{
  display: none;
 }
 .main-menu{
-    position:absolute;
+    position:fixed;
     width: 100%;
-    top:0px;
-    left:0px;
+    top: 0%;
+    left: 0%;
+    height: 45px;
     background: rgba(107,0,54,0.95);
     border-radius: 3%;
     color: #fff;
     z-index: 9999999999999999999;
     padding-left: 10%;
     padding-right: 10%;
+    visibility: visible;
 }
 @media (max-width: 700px){
     body{
@@ -99,12 +113,27 @@ body{
     -o-background-size: cover;
     background-size: cover;
     margin: 0px;}
-
+    .div-sld{
+  width: 90%;
+  height: 70%;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 1%;
+  padding-bottom: 5%;}
+  .d-block{
+    height: 100%;
+    width: 100%;
+  }
+  .carousel-inner{
+    height: 150%;
+  }
     .main-menu{
+      top: 60px;
+      display: inline-block;
         margin: 0px;
         padding: 0px;
         visibility: hidden;
-        position: relative;
+        position: fixed;
     width: 100%;
 }
 .main{
@@ -133,6 +162,14 @@ margin-top:15%;
     visibility: hidden;
 
 }
+.cont-ico-menu{
+    visibility: hidden;
+
+}
+.main-menu{
+    visibility: visible;
+
+}
 }
 
 .main-menu a{float: right;
@@ -159,7 +196,6 @@ width: 40px;
 float: right;
 position: relative;
 margin: 10px;
-z-index: 99999999999999999999990;
 }
 .img-bar img{
     height: 100%;
@@ -178,7 +214,7 @@ z-index: 99999999999999999999990;
 }
 .cont-load-img{
     opacity: 0.95;
-    z-index: 99999999999999999999;
+    z-index: 9999999999999999999099999999;
     top:0px;
     left:0px;
     bottom:0px;
@@ -192,23 +228,59 @@ z-index: 99999999999999999999990;
     top:0px;
     left:0px;
     right:0px;
-    position:fixed;
+    position: fixed;
+    z-index: 99999999999999999990;
 }
 .div-sld{
   height: auto;
-  width: 80%;
+  width: 90%;
   margin-top: 5%;
-  margin-left: 10%;
+  margin-left: 5%;
   border-radius: 1%;
   padding-bottom: 5%;
 }
 .fondo-sld{
   height: auto;
-  width: 80%;
-  margin-left: 10%;
-  margin-top:7%;
+  width: 96%;
+  margin-left: 2%;
+  margin-top:14%;
   position:static;
-  background: rgba(0, 0, 0,1);
+  border-radius: 1%;
+  background: rgba(0, 0, 0,0.05);
+  /* background:rgba(107,0,54,0.5); */
+  
+}
+@media (min-width: 1000px){
+  .fondo-sld{
+  height: auto;
+  width: 86%;
+  margin-left: 7%;
+  margin-top:10%;
+  
+  }
+  .div-sld{
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 1%;
+  padding-bottom: 5%;
+}
+}
+@media (min-width: 1150px){
+  .fondo-sld{
+  height: auto;
+  width: 78%;
+  margin-left: 11%;
+  margin-top: 5%;
+  
+  }
+  .div-sld{
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 1%;
+  padding-bottom: 5%;
+}
 }
 </style>
 <body>
@@ -221,14 +293,18 @@ z-index: 99999999999999999999990;
     </div>
     <div class="cont-ico-menu">
     <div class="img-bar"><img src="assets/icon-bars.svg" alt=""></div>
-    <div class="main-menu">
+  </div>
+    <div class="main-menu animar-entrada-left">
         <a  href="">Inicio</a>
         <a  href="">Lugares</a>
         <a  href="">Usuario</a>
         <a  style="float:left; margin: 0%;" href=""><b>TOUR UTEC</b></a>
     </div>
-</div>
-  <!-- <div class="fondo-sld row">
+    <div class="qrlector">
+        <p>Barcode: <span class="found"></span></p>
+        <div id="interactive" class="viewport"></div>
+    </div>
+  <div class="fondo-sld row animar-entrada-up">
    <div id="carouselExampleControls" class="carousel slide div-sld" data-ride="carousel">
       <div class="carousel-inner" style="  position:static;">
         <div class="carousel-item active">
@@ -250,11 +326,13 @@ z-index: 99999999999999999999990;
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div> -->
+  </div>
   <br>
-  <div class="main">
+  <!-- INICIO LISTADO EDIFICIOS -->
+  <!-- <div class="main animar-entrada-up">
     <center>
-    <div class="menu">
+        <div class="titulo-Listado">Listado de Edificios</div>
+    <div class="menu ">
           <div class="boton"><img src="assets/fondo.jpg"><label>Francisco Morazan</label></div>
           <div class="boton"><img src="assets/fondo2.jpg"><label>Benito Juarez</label></div>
           <div class="boton"><img src="assets/fondo3.jpg"><label>Museo</label></div>
@@ -268,9 +346,31 @@ z-index: 99999999999999999999990;
           <div class="boton"><img src="assets/fondo3.jpg"><label>BJ-Museo</label></div>
     </div>
     </center>
-  </div>
-  <div class="main">
-    	<div class="card text-center">
+  </div> -->
+  <!-- Fin LISTADO EDIFICIOS -->
+
+   <!-- INICIO LISTADO Secciones -->
+   <!-- <div class="main animar-entrada-up">
+      <center>
+        <div class="titulo-Listado">Listado de Secciones</div>
+      <div class="menu ">
+            <div class="boton"><img src="assets/fondo.jpg"><label>Seccion 1</label></div>
+            <div class="boton"><img src="assets/fondo2.jpg"><label>Seccion 2</label></div>
+            <div class="boton"><img src="assets/fondo3.jpg"><label>Seccion 3</label></div>
+            <div class="boton"><img src="assets/fondo4.jpg"><label>Seccion 4</label></div>
+            <div class="boton"><img src="assets/fondo.jpg"><label>Seccion 5</label></div>
+            <div class="boton"><img src="assets/fondo2.jpg"><label>Seccion 6</label></div>
+            <div class="boton"><img src="assets/fondo3.jpg"><label>Seccion 7</label></div>
+            <div class="boton"><img src="assets/fondo4.jpg"><label>Seccion 8</label></div>
+      </div>
+      </center>
+    </div> -->
+    <!-- Fin LISTADO Secciones -->
+  <!-- <div class="main animar-entrada-up ">
+      <center>
+      <div class="titulo-Listado">Nombre de Seccion</div>
+      </center> 
+    	<div class="card card-primary text-center">
           <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
@@ -336,9 +436,9 @@ z-index: 99999999999999999999990;
                 <div><img class="on" src="assets/fondo4.jpg"></div>
                 <div><img class="on" src="assets/fondo.jpg" ></div>
                 <div><img class="on" src="assets/fondo3.jpg"></div>
-        
-          </div>
-        </center>
+              </div>
+            </center>
+                
       </div>
         <div class="card-body cds ccddv hidden  ">
             <iframe  src="https://www.youtube.com/embed/85MppyLJHz0"  allowfullscreen></iframe>
@@ -371,19 +471,61 @@ z-index: 99999999999999999999990;
               </div>
             </div>
   </div>
+  </div> -->
   </body>
+  <script src="lectoQR/dist/quagga.js" ></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script> 
+  Quagga.init({
+  inputStream: {
+      name: "Live",
+      type: "LiveStream",
+      constraints: {
+            width: 640,
+            height: 480,
+            facing: "environment"
+        }
+  },
+  locator: {
+    patchSize: "medium",
+    halfSample: true
+  },
+  numOfWorkers: 4,
+  locate: true,
+  decoder : {
+      readers: ["code_128_reader", "ean_reader"]
+  }
+}, function() {
+  Quagga.start();
+});    
+  Quagga.onDetected(function(result) {
+  alert(result);
+  var code = result.codeResult.code;
+  document.querySelector(".found").innerHTML = code;
+});
 var m_tr = true;
 $(document).ready(function(){
     setTimeout(cerraLoad, 1000);
 });
 function cerraLoad(){
 $(".cont-load").addClass("hidden");
+animar();
 }
+function animar(){
+  var tl = new TimelineMax();
+var $Div = $(".animar-entrada-up")
+var $Div2 = $(".animar-entrada-left")
+
+
+tl.to($Div2, 0, { ease: Back.easeOut.config(1.7), x: 500 }
+).to($Div2, 1, { ease: Back.easeOut.config(1.7), x: -0 }
+).to($Div, 0, { ease: Back.easeOut.config(1.7), y: 500 },-1
+).to($Div, 2, { ease: Back.easeOut.config(1.7), y: -0 },-1);
+};
+
 $(".img-bar").click(function(){
 if(m_tr){
     m_tr = false;
