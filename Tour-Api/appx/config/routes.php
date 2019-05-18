@@ -56,5 +56,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['Edificios/listaEdificios']['GET'] = 'edificios_controller/listaEdificios';
 $route['Edificios/borrarDatos']['delete'] = 'edificios_controller/borrarDatos';
 // $route['Edificios/guardarDatos']['post'] = 'edificios_controller/guardarDatos';
-$route['Edificios/guardarDatos/(:num)/(:num)/(:any)/(:num)/(:num)/(:num)/(:any)']['post'] = 'edificios_controller/guardarDatos/$1/$2/$3/$4/$5/$6/$7';
+$route['Edificios/guardarDatos']['POST'] = 'edificios_controller/guardarDatos';
 $route['Edificios/listaEdificios_fil']['GET'] = 'edificios_controller/listaEdificios_fil'; ///(:num)/(:num)/(:any)/(:num)/(:num)/(:num)/(:any)     /$t/$c/$n/$o/$l/$lo/$a

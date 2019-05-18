@@ -3,7 +3,7 @@
        
       public function __construct(){        
         $this->load->database();
-        $this->tblName = 'adm_edf_edificio';
+        $this->tblName = 'adm_sec_seccion';
       }            
     
       public function getEdificios_fil($dat){

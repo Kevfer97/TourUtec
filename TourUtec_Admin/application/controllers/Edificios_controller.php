@@ -55,7 +55,8 @@ class Edificios_controller extends CI_Controller
 		$l = $this->input->post("txtLatitud");
 		$lo = $this->input->post("txtLongitud");
 		$a = $this->input->post("txtAcronimo");
-		$url = base_url('/Tour-Api/Edificios/guardarDatos/?c=' . $c . 'n=' . $n . '&o=' . $o . '&l=' . $l . '&lo=' . $lo . '&a=' . $a);
+		$i = $this->input->post("txtPath");
+		$url = base_url('/Tour-Api/Edificios/guardarDatos/?c=' . $c . 'n=' . $n . '&o=' . $o . '&l=' . $l . '&lo=' . $lo . '&a=' . $a.'&i'.$i);
 		//creamos nuevo recurso cURL 
 		$ch = curl_init($url);
 
