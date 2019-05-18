@@ -34,13 +34,14 @@ class edificios_controller extends REST_Controller{
     //API -  Regresa todos los edificios y se puede filtrar por todos los campos
     function listaEdificios_fil_get(){
         //$top  = $this->input->get("t"); //this->get('$t');
-        $edf_codigo  = $this->input->get("c");
-        $edf_nombre  = $this->input->get("n");
-        $edf_orden  = $this->input->get("o");
-        $edf_latitud  = $this->input->get("l");
-        $edf_longitud  = $this->input->get("lo");
-        $edf_acronimo  = $this->input->get("a");
-        $data = array('opc' => 2, 'c' => $edf_codigo, 'n' => $edf_nombre, 'o' => $edf_orden, 'l' => $edf_latitud, 'lo' => $edf_longitud, 'a' => $edf_acronimo);
+        $edf_codigo  = $this->input->get("edf_codigo");
+        $edf_nombre  = $this->input->get("edf_nombre");
+        $edf_imagen  = $this->input->get("edf_imagen");
+        $edf_orden  = $this->input->get("edf_orden");
+        $edf_latitud  = $this->input->get("edf_latitud");
+        $edf_longitud  = $this->input->get("edf_longitud");
+        $edf_acronimo  = $this->input->get("edf_acronimo");
+        $data = array('opc' => 2, 'edf_codigo' => $edf_codigo, 'edf_nombre' => $edf_nombre,'edf_imagen' => $edf_imagen, 'edf_orden' => $edf_orden, 'edf_latitud' => $edf_latitud, 'edf_longitud' => $edf_longitud, 'edf_acronimo' => $edf_acronimo);
         // $top = 0;
         // $edf_codigo = 1;
         // $edf_nombre  = "";
@@ -60,12 +61,13 @@ class edificios_controller extends REST_Controller{
     //API - Guarda y actualiza los datos
     function guardarDatos_post(){
 
-        $edf_codigo  = $this->input->get("c");
-        $edf_nombre  = $this->input->get("n");
-        $edf_orden  = $this->input->get("o");
-        $edf_latitud  = $this->input->get("l");
-        $edf_longitud  = $this->input->get("lo");
-        $edf_acronimo  = $this->input->get("a");
+        $edf_codigo  = $this->input->get("edf_codigo");
+        $edf_imagen  = $this->input->get("edf_imagen");
+        $edf_nombre  = $this->input->get("edf_nombre");
+        $edf_orden  = $this->input->get("edf_orden");
+        $edf_latitud  = $this->input->get("edf_latitud");
+        $edf_longitud  = $this->input->get("edf_longitud");
+        $edf_acronimo  = $this->input->get("edf_acronimo");
         // $edf_codigo = 11;
         // $edf_nombre  = "test";
         // $edf_orden  = 7;
@@ -76,6 +78,7 @@ class edificios_controller extends REST_Controller{
                 $this->response("No se pudo ingresar el registro debido a que la inormación no esta completa.", REST_Controller::HTTP_BAD_REQUEST);
          }else{
             $result = $this->clEdificios->guardarDatos($edf_codigo, array("edf_nombre"=>$edf_nombre, 
+                                                                            "edf_imagen"=>$edf_imagen, 
                                                                             "edf_orden"=>$edf_orden, 
                                                                             "edf_latitud"=>$edf_latitud, 
                                                                             "edf_longitud"=>$edf_longitud, 
